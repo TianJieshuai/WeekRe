@@ -15,8 +15,10 @@ public class RegularUtils {
     }
 
     public static boolean isCheckPassword(String password) {
-
-
+        String regularPassword = "\\w{6,16}";
+        if (password.matches(regularPassword)) {
+            return true;
+        }
         return false;
     }
 
