@@ -142,5 +142,6 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
                 .setAutoCancel(true);
         Notification build = builder.build();
         manager.notify(NOTIFICATIONID,build);
+
     }
 }
