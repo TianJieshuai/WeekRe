@@ -8,15 +8,15 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/register_tb"
-        android:background="#00ffff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#00ffff">
 
         <ImageView
             android:id="@+id/register_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/u34"/>
+            android:src="@mipmap/u34" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,25 +27,28 @@
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/register_tb">
+        android:layout_below="@id/register_tb"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/register_name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="请输入手机号或邮箱" />
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/back"
+            android:hint="请输入手机号或邮箱"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/register_pass"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/register_name"
-            android:layout_margin="10dp"
-            android:hint="请输入密码" />
+            android:background="@drawable/back"
+            android:hint="请输入密码"
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/register_btn"

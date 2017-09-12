@@ -42,19 +42,22 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void run() {
-            i--;
-            code_gain.setText("("+i+")重新获取");
-            code_gain.setClickable(false);
-            handler.postDelayed(run,1000);
+            if (i>0){
+                code_gain.setText("("+i+")重新获取");
+                code_gain.setClickable(false);
+                handler.postDelayed(run,1000);
+            }
             if (i==0){
                 code_gain.setText("获取验证码");
                 code_gain.setClickable(true);
+                i=60;
             }
             if (i==40){
                 Random random=new Random();
-                r = random.nextInt();
+                r = random.nextInt(9999)+1000;
                 notification();
             }
+            i--;
         }
     };
     private int r;
@@ -126,6 +129,8 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
         edit.putString("bbb",pass);
         edit.commit();
 
+        Intent intent = new Intent(CodeActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
