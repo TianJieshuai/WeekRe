@@ -33,7 +33,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-
+                submit();
                 break;
         }
     }
