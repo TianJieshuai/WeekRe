@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (RegularUtils.isCheckName(name) | RegularUtils.isCheckPhone(Integer.parseInt(name))) {
+        if (RegularUtils.isCheckName(name)) {
             if (name.equals(loginname)) {
                 if (password.equals(loginpassword)) {
                     Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
