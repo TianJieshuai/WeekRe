@@ -32,9 +32,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-
-
-
     }
 
     private void initView() {
@@ -69,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void submit() {
-        SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
         loginname = sp.getString("aaa", "hehe");
         loginpassword = sp.getString("bbb", "haha");
         // validate
