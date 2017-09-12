@@ -16,6 +16,7 @@ public class RegularUtils {
 
     public static boolean isCheckPassword(String password) {
 
+
         return false;
     }
 
