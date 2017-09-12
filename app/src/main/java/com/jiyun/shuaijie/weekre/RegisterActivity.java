@@ -69,9 +69,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         // TODO validate success, do something
 
         if (!RegularUtils.isCheckName(name)){
+            Toast.makeText(this, "账号输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
         if (!RegularUtils.isCheckPassword(pass)){
+            Toast.makeText(this, "密码输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
 
