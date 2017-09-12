@@ -89,10 +89,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (name.equals(loginname)) {
                 if (password.equals(loginpassword)) {
                     Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else {
                     Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, RePasswordActivity.class));
                 }
 
 
