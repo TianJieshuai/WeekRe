@@ -32,6 +32,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
                 } else {
                     button.setText("获取验证码");
                     button.setClickable(true);
+                    button.setSelected(false);
                 }
             }
         }
@@ -79,6 +80,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.button:
                 button.setClickable(false);
+                button.setSelected(true);
                 handler.sendEmptyMessageDelayed(1, 50);
                 handler.postDelayed(runnable, 10000);
                 break;
