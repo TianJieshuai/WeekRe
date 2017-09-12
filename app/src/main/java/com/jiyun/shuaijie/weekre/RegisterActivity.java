@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.jiyun.shuaijie.weekre.utils.RegularUtils;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton register_image;
+    private ImageView register_image;
     private Toolbar register_tb;
     private EditText register_name;
     private EditText register_pass;
@@ -27,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
-        register_image = (ImageButton) findViewById(R.id.register_image);
+        register_image = (ImageView) findViewById(R.id.register_image);
         register_tb = (Toolbar) findViewById(R.id.register_tb);
         register_name = (EditText) findViewById(R.id.register_name);
         register_pass = (EditText) findViewById(R.id.register_pass);
@@ -65,7 +68,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // TODO validate success, do something
 
+        if (!RegularUtils.isCheckName(name)){
+            return;
+        }
+        if (!RegularUtils.isCheckPassword(pass)){
+            return;
+        }
+
         Intent intent = new Intent(RegisterActivity.this, CodeActivity.class);
+        intent.putExtra("name",name);
+        intent.putExtra("pass",pass);
         startActivity(intent);
     }
 }
