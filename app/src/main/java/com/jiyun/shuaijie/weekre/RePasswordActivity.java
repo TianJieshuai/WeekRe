@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -20,7 +21,21 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     private EditText regEt_name;
     private EditText editText;
     private Button button;
-    private Handler handler = new Handler();
+    private int conut = 60;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                if (conut > 0) {
+                    button.setText("重新获取 " + conut--);
+                    handler.sendEmptyMessageDelayed(1, 1000);
+                } else {
+                    button.setText("获取验证码");
+                    button.setClickable(true);
+                }
+            }
+        }
+    };
     private Runnable runnable = new Runnable() {
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
@@ -31,7 +46,11 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
                 yanzhengma.append(random.nextInt(9));
             }
             NotificationManager systemService = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            Notification yanzheng = new Notification.Builder(RePasswordActivity.this).setSmallIcon(R.mipmap.ic_launcher_round).setTicker("验证码通知").setContentTitle("").setSubText(yanzhengma.toString()).build();
+            Notification yanzheng = new Notification.Builder(RePasswordActivity.this)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setTicker("验证码通知").setContentTitle("验证码："+yanzhengma.toString())
+                    .setAutoCancel(true)
+                    .build();
             systemService.notify(1, yanzheng);
         }
     };
@@ -59,7 +78,9 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                handler.postDelayed(runnable, 100000);
+                button.setClickable(false);
+                handler.sendEmptyMessageDelayed(1, 50);
+                handler.postDelayed(runnable, 10000);
                 break;
             case R.id.regBtn_submit:
                 submit();
@@ -83,8 +104,9 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
 
         // TODO validate success, do something
         if (yanzhengma != null) {
-            if (editTextString.equals(yanzhengma.toString())){
+            if (editTextString.equals(yanzhengma.toString())) {
                 Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
 
