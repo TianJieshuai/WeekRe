@@ -32,9 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-        SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
-        loginname = sp.getString("aaa", "hehe");
-        loginpassword = sp.getString("bbb", "haha");
+
 
 
     }
@@ -71,6 +69,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void submit() {
+        SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
+        loginname = sp.getString("aaa", "hehe");
+        loginpassword = sp.getString("bbb", "haha");
         // validate
         String name = et_name.getText().toString().trim();
         if (TextUtils.isEmpty(name)) {
