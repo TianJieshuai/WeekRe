@@ -13,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jiyun.shuaijie.weekre.utils.RegularUtils;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -65,6 +70,53 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.tv_Register:
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 break;
+            case R.id.iv_shareqq:
+                UMShareAPI.get(LoginActivity.this).getPlatformInfo(this, SHARE_MEDIA.QQ, new UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+
+                    }
+
+                    @Override
+                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+
+                       startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media, int i) {
+
+                    }
+                });
+                break;
+            case R.id.iv_sharesina:
+                UMShareAPI.get(LoginActivity.this).getPlatformInfo(this, SHARE_MEDIA.SINA, new UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+
+                    }
+
+                    @Override
+                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media, int i) {
+
+                    }
+                });
+                break;
         }
     }
 
@@ -97,7 +149,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             } else {
                 Toast.makeText(this, "该用户名不存在,请注册", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                //startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
 
         } else {
