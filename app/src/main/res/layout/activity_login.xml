@@ -10,11 +10,13 @@
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/back"
         android:layout_centerInParent="true"
         android:hint="请输入手机号或邮箱" />
 
     <EditText
         android:layout_below="@id/et_name"
+        android:background="@drawable/back"
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
