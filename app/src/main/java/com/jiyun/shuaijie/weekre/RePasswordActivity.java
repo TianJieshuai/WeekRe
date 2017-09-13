@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -60,6 +61,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     private StringBuffer yanzhengma;
     private EditText regEt_password;
     private SharedPreferences user;
+    private Toolbar regTB_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,16 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initView() {
+        regTB_toolbar = (Toolbar) findViewById(R.id.regTB_toolbar);
+        regTB_toolbar.setTitle("");
+        setSupportActionBar(regTB_toolbar);
+        regTB_toolbar.setNavigationIcon(R.mipmap.u34);
+        regTB_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         regEt_name = (EditText) findViewById(R.id.regEt_name);
         regEt_yanzhengma = (EditText) findViewById(R.id.regEt_yanzhengma);
         button = (Button) findViewById(R.id.button);
