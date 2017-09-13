@@ -126,14 +126,26 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
             Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
+        String aaa = user.getString("aaa", null);
+        if (TextUtils.isEmpty(aaa)) {
+            Toast.makeText(this, "用户不存在", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // TODO validate success, do something
         if (this.yanzhengma != null) {
-            if (yanzhengma.equals(this.yanzhengma.toString())) {
+            if (yanzhengma.equals(this.yanzhengma.toString()) && name.equals(aaa)) {
                 Toast.makeText(this, "找回成功，密码修改为：" + password, Toast.LENGTH_SHORT).show();
                 edit.putString("bbb", password);
                 edit.clear();
                 finish();
+            } else {
+                if (!(yanzhengma.equals(this.yanzhengma.toString()))) {
+                    Toast.makeText(this, "验证码不正确", Toast.LENGTH_SHORT).show();
+                }
+                if (!(name.equals(aaa))) {
+                    Toast.makeText(this, "用户不存在", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
