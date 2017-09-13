@@ -10,73 +10,76 @@
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/back"
         android:layout_centerInParent="true"
+        android:background="@drawable/back"
         android:hint="请输入手机号或邮箱" />
 
     <EditText
-        android:inputType="numberPassword"
-        android:layout_below="@id/et_name"
-        android:background="@drawable/back"
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/et_name"
         android:layout_centerInParent="true"
-        android:hint="请输入密码" />
+        android:background="@drawable/back"
+        android:hint="请输入密码"
+        android:inputType="textPassword" />
+
     <Button
-        android:background="@drawable/btn_seletor"
-        android:text="登陆"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/et_password"
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_seletor"
+        android:text="登陆" />
+
     <ImageView
-        android:background="@mipmap/u24"
         android:id="@+id/iv_shareqq"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/btn_login"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="63dp" />
+        android:layout_below="@+id/btn_login"
+        android:layout_marginLeft="63dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="23dp"
+        android:background="@mipmap/u24" />
+
     <ImageView
-        android:background="@mipmap/u22"
         android:id="@+id/iv_sharesina"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginRight="91dp"
         android:layout_alignBottom="@+id/iv_shareqq"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="91dp" />
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="91dp"
+        android:layout_marginRight="91dp"
+        android:background="@mipmap/u22" />
 
     <TextView
-        android:textSize="20dp"
         android:id="@+id/tv_findpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="找回密码"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
         android:layout_alignBaseline="@+id/tv_Register"
         android:layout_alignBottom="@+id/tv_Register"
+        android:layout_alignEnd="@+id/iv_shareqq"
         android:layout_alignRight="@+id/iv_shareqq"
-        android:layout_alignEnd="@+id/iv_shareqq" />
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:text="找回密码"
+        android:textSize="20dp" />
 
     <TextView
-        android:textSize="20dp"
         android:id="@+id/tv_Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:text="注册"
-        android:layout_marginBottom="32dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="20dp" />
 
 </RelativeLayout>
