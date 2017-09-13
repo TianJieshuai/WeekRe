@@ -7,7 +7,7 @@ package com.jiyun.shuaijie.weekre.utils;
 public class RegularUtils {
     public static boolean isCheckName(String name) {
         String phomeRegularString = "1[3589][0-9]{9,9}";
-        String E_mainRegularString = "\\w{0}@[\\w.]{0}";
+        String E_mainRegularString = "[\\w]{0,}@[\\w\\.]{0,}";
         if ((name.matches(phomeRegularString) | name.matches(E_mainRegularString))) {
             return true;
         }
