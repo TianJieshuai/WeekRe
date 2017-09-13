@@ -2,6 +2,7 @@ package com.jiyun.shuaijie.weekre;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,7 @@ import java.util.Random;
 public class RePasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText regEt_name;
-    private EditText editText;
+    private EditText regEt_yanzhengma;
     private Button button;
     private int conut = 60;
     private Handler handler = new Handler() {
@@ -49,7 +50,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
             NotificationManager systemService = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             Notification yanzheng = new Notification.Builder(RePasswordActivity.this)
                     .setSmallIcon(R.mipmap.ic_launcher_round)
-                    .setTicker("验证码通知").setContentTitle("验证码："+yanzhengma.toString())
+                    .setTicker("验证码通知").setContentTitle("验证码：" + yanzhengma.toString())
                     .setAutoCancel(true)
                     .build();
             systemService.notify(1, yanzheng);
@@ -57,18 +58,22 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     };
     private Button regBtn_submit;
     private StringBuffer yanzhengma;
+    private EditText regEt_password;
+    private SharedPreferences user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_re_password);
         initView();
+        user = getSharedPreferences("user", MODE_PRIVATE);
     }
 
     private void initView() {
         regEt_name = (EditText) findViewById(R.id.regEt_name);
-        editText = (EditText) findViewById(R.id.editText);
+        regEt_yanzhengma = (EditText) findViewById(R.id.regEt_yanzhengma);
         button = (Button) findViewById(R.id.button);
+        regEt_password = (EditText) findViewById(R.id.regEt_password);
 
         button.setOnClickListener(this);
         regBtn_submit = (Button) findViewById(R.id.regBtn_submit);
@@ -91,6 +96,7 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void submit() {
+        SharedPreferences.Editor edit = user.edit();
         // validate
         String name = regEt_name.getText().toString().trim();
         if (TextUtils.isEmpty(name)) {
@@ -98,19 +104,25 @@ public class RePasswordActivity extends AppCompatActivity implements View.OnClic
             return;
         }
 
-        String editTextString = editText.getText().toString().trim();
-        if (TextUtils.isEmpty(editTextString)) {
+        String yanzhengma = regEt_yanzhengma.getText().toString().trim();
+        if (TextUtils.isEmpty(yanzhengma)) {
             Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String password = regEt_password.getText().toString().trim();
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // TODO validate success, do something
-        if (yanzhengma != null) {
-            if (editTextString.equals(yanzhengma.toString())) {
-                Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
+        if (this.yanzhengma != null) {
+            if (yanzhengma.equals(this.yanzhengma.toString())) {
+                Toast.makeText(this, "找回成功，密码修改为：" + password, Toast.LENGTH_SHORT).show();
+                edit.putString("bbb", password);
+                edit.clear();
                 finish();
             }
         }
-
     }
 }
