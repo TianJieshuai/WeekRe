@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initView();
 
 
-
     }
 
     private void initView() {
@@ -80,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
 
-                       startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     }
 
                     @Override
@@ -103,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     }
 
                     @Override
@@ -160,5 +159,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // TODO validate success, do something
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }
